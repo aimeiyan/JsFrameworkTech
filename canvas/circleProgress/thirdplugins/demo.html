@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="hr-personal-center-progress">
+    <strong class="hr-personal-center-progress-num"></strong>
+    <div class="hr-personal-center-white-bg">
+        <!--<div class="hr-personal-center-portrait-img">-->
+        <!--<img src="../../../resources/img/portal/personalCenter/portrait.jpg" alt="">-->
+        <!--</div>-->
+    </div>
+</div>
+<div class="hr-personal-center-progress">
+    <strong class="hr-personal-center-progress-num"></strong>
+    <div class="hr-personal-center-white-bg">
+        <!--<div class="hr-personal-center-portrait-img">-->
+        <!--<img src="../../../resources/img/portal/personalCenter/portrait.jpg" alt="">-->
+        <!--</div>-->
+    </div>
+</div>
+<div class="hr-personal-center-progress">
+    <strong class="hr-personal-center-progress-num"></strong>
+    <div class="hr-personal-center-white-bg">
+        <!--<div class="hr-personal-center-portrait-img">-->
+        <!--<img src="../../../resources/img/portal/personalCenter/portrait.jpg" alt="">-->
+        <!--</div>-->
+    </div>
+</div>
+<script type="text/javascript" src="../../../jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="circle-progress.js"></script>
+<script>
+    $(function () {
+        var infoIntegrityData = 0.75;   //个人信息完整度数据
+        $('.hr-personal-center-progress').circleProgress({
+            value: infoIntegrityData,
+            size: 100,
+            startAngle: Math.PI * 1.5,
+            reverse: false,
+            thickness: 4,
+            fill: {gradient: ['#ffd131', '#ff8d48']},
+            emptyFill: '#dedff9'
+        }).on('circle-animation-progress', function (event, progress) {
+            $(this).find('.hr-personal-center-progress-num').html(parseInt(infoIntegrityData * 100 * progress) + '<i>%</i>');
+        });
+
+
+//        $('.hr-personal-center-progress').circleProgress("widget");
+    })
+</script>
+</body>
+</html>

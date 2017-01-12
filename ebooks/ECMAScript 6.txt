@@ -1,0 +1,4 @@
+阮一峰的书：
+http://es6.ruanyifeng.com/#docs/intro
+
+http://www.ruanyifeng.com/blog/2016/01/babel.html

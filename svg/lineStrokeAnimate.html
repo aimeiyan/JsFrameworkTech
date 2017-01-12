@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+
+        /*.module3 {*/
+            /*height: 300px;*/
+        /*}*/
+
+        #m3path {
+            /*position: absolute;*/
+            width: 246px;
+            height: 200px;
+            /*top: 30px;*/
+            /*left: 50%;*/
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            /*-webkit-transform: translate3d(-50%, 0, 0);*/
+            /*transform: translate3d(-50%, 0, 0)*/
+        }
+
+        #m3path {
+            animation-name: dash;
+            -webkit-animation-name: dash;
+            -moz-animation-name: dash;
+            animation-duration: 2.5s;
+            -webkit-animation-duration: 2.5s;
+            -moz-animation-duration: 2.5s;
+            animation-delay: 1s;
+            -webkit-animation-delay: 1s;
+            -moz-animation-delay: 1s;
+            animation-timing-function: linear;
+            -webkit-animation-timing-function: linear;
+            -moz-animation-timing-function: linear;
+            animation-fill-mode: forwards;
+            -webkit-animation-fill-mode: forwards;
+            -moz-animation-fill-mode: forwards;
+            animation-iteration-count: 1;
+            -webkit-animation-iteration-count: 1;
+            -moz-animation-iteration-count: 1;
+        }
+
+        @-webkit-keyframes dash {
+            to {
+                stroke-dashoffset: 0
+            }
+        }
+        @-ms-keyframes dash {
+            to {
+                stroke-dashoffset: 0
+            }
+        }
+
+
+        @keyframes dash {
+            to {
+                stroke-dashoffset: 0
+            }
+        }
+
+
+
+
+        #svgForStroke line{
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: dash 5s linear infinite;
+            -webkit-animation: dash 5s linear infinite;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="module3">
+        <svg version="1.1" baseProfile="full" id="m3path" height="200px" width="246px" style="padding: 10px">
+            <switch>
+                <path stroke="rgb( 130, 220, 218 )" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="bevel" fill="none" stroke-opacity="1"
+                      d="M0.065,45.761 C0.065,45.761 206,0 206,0 C206,0 242.5,52.5 242.5,52.5 C242.5,52.5 199.5,142 199.5,142 C199.5,142 246,200 246,200  "/>
+                <!--<foreignObject>-->
+                <!--<div class="m3-svg-nosupport"></div>-->
+                <!--</foreignObject>-->
+            </switch>
+        </svg>
+    </div>
+
+
+<div>
+    <svg id="svgForStroke" width="400" height="200" xmlns="http://www.w3.org/2000/svg">
+        <g>
+            <line fill="none" stroke="#000000" stroke-width="2" stroke-dasharray="null" stroke-linejoin="null"
+                  stroke-linecap="round" x1="0" y1="90" x2="400" y2="90"/>
+        </g>
+    </svg>
+</div>
+<div>
+    <svg id="svgForStroke1" width="400" height="200" xmlns="http://www.w3.org/2000/svg">
+        <g>
+            <line fill="none" stroke="#000000" stroke-width="2" stroke-dasharray="null" stroke-linejoin="null"
+                  stroke-linecap="round" x1="0" y1="90" x2="400" y2="90"/>
+        </g>
+    </svg>
+</div>
+<p>点击下面的滑块（或输入数值）体验下：<br>
+    <strong>stroke-dasharray:</strong> <input type="range" min="0" max="400" value="0"
+                                              onchange='document.querySelector("#svgForStroke1 line").setAttribute("stroke-dasharray", this.value)'><br>
+    <strong>stroke-dashoffset:</strong> <input type="range" min="0" max="400" value="0"
+                                               onchange='document.querySelector("#svgForStroke1 line").setAttribute("stroke-dashoffset", this.value)'>
+</p>
+<script type="text/javascript" src="../jquery-1.11.3.min.js"></script>
+<script>
+    $(function () {
+//        $(".module3").parent().addClass("active");
+        var path = document.querySelector('#svgForStroke1');
+        console.log(path);
+
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*
+     对象写法
+     */
+    var module1 = new Object({
+        _count: 5,
+        m1: function () {
+            alert("m1");
+        },
+        m2: function () {
+            alert("m2");
+        }
+    });
+
+
+    //    module1.m1();
+    //    module1._count = 8;
+    //    console.log(module1)
+
+
+
+    /*
+     立即执行函数写法
+     */
+    var module2 = (function () {
+        var _count = 5;
+        var m1 = function () {
+            alert("m1");
+        };
+        var m2 = function () {
+            alert("m2");
+        };
+
+//        console.log(_count);
+
+        return {
+            m1: m1,
+            m2: m2
+        };
+    })();
+
+    //    console.log(module2._count);
+
+
+
+    /*
+     augmentation(放大模式)
+     */
+    var module3 = (function (mod) {
+        mod.m3 = function () {
+            alert("m3");
+        };
+        return mod;
+    })(module1);
+
+    //    module3.m1();
+    //    module3.m3();
+
+
+
+    /*
+     Loose augmentation(宽放大模式)
+     */
+    var module4 = (function (mod) {
+        mod.m4 = function () {
+            alert("m4");
+        };
+        return mod;
+    })(window.module1 || {});
+
+    module4.m1();
+    module4.m2();
+    module4.m3();
+    module4.m4();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,2 @@
+1、demo-01.html、demo-02.html 中的div是relative状态，可以实现动画，因为要改变left的值。
+2、demo-03.html 中的div是static状态，可以实现动画。

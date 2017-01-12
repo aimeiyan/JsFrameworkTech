@@ -1,0 +1,28 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>$obj.data()</title>
+</head>
+<body>
+<button id="btn1">把数据添加到 div 元素</button>
+<br/>
+<button id="btn2">获取已添加到 div 元素的数据</button>
+<div></div>
+
+<script type="text/javascript" src="../jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btn1").click(function () {   //向元素附加数据
+            $("div").data({
+                "greeting": "Hello World",
+                "address": "beijing"
+            });
+        });
+        $("#btn2").click(function () {   //取回附加的数据
+            console.log($("div").data("greeting"));
+            console.log($("div").data());
+        });
+    });
+</script>
+</body>
+</html>

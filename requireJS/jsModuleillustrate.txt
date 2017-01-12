@@ -1,0 +1,5 @@
+http://www.ruanyifeng.com/blog/2012/10/javascript_module.html
+
+http://www.ruanyifeng.com/blog/2014/09/package-management.html
+
+http://www.ruanyifeng.com/blog/2012/11/require_js.html

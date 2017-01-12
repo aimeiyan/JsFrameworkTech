@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div><img src="../images/extend1.png" alt=""></div>
+<div><img src="../images/extend2.png" alt=""></div>
+<div><img src="../images/extend3.png" alt=""></div>
+<!--<div><input type="text" placeholder="请输入用户名" name="username"></div>-->
+<script src="../thirdPlugins/jqueryCodeLearning/jquery-1.12.3.js"></script>
+<script>
+    $(function () {
+
+        /**
+         * 实例一：jquery的扩展方法原型
+         */
+
+        var dest1 = {
+            "name": "John",
+            "age": "20"
+        };
+
+        var src1 = {
+            "sex": "man",
+            "name": "John"
+        };
+
+        var result1 = $.extend(dest1, src1);  //dest1的机构改变了
+        console.log(dest1);
+        var result2 = $.extend({}, dest1, src1);   //dest1的机构没有改变
+        console.log(dest1);
+
+
+        /**
+         * 实例二：省略dest参数，即第一个参数
+         */
+
+        $.fn.extend({
+            "focusOutputValue": function () {  // 将focusOutputValue 方法合并到jquery的实例对象中。
+//                console.log($(this));
+//                console.log($(this).val());
+                console.log("washington");
+            }
+        });
+
+        $.fn.focusOutputValue();
+
+
+        /**************************************************************/
+
+        $.extend({
+            "output": function (str) {
+                console.log(str);
+            }
+        });
+
+        $.output("hello world");
+
+        $.extend($.output, {
+            "print": function () {
+                console.log("将print方法扩展到之前扩展的jquery的output命名空间去")
+            }
+        });
+
+        $.output.print();
+
+        /**
+         * 深度拷贝，jquery的extend的另外一个重载原型
+         */
+
+        var example1 = $.extend(true, {}, {
+            "name": "John",
+            "location": {
+                "city": "Boston",
+                "country": "USA"
+            }
+        }, {
+            "last": "Resig",
+            "location": {
+                "status": "MA",
+                "country": "China"
+            }
+        });
+
+        var example2 = $.extend(false, {}, {
+            "name": "John",
+            "location": {
+                "city": "Boston",
+                "country": "USA"
+            }
+        }, {
+            "last": "Resig",
+            "location": {
+                "status": "MA",
+                "country": "China"
+            }
+        });
+        console.log(example1);
+        console.log(example2);
+
+    })
+</script>
+</body>
+</html>

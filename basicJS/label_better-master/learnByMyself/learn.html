@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>练习写labelBetter的JS代码</title>
+    <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
+        }
+
+        form {
+            margin: 100px 0 0 50px;
+        }
+
+        input[name=username] {
+            border: 1px solid #333;
+            width: 200px;
+            padding: 10px 5px;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<form action="">
+    <input type="text" placeholder="用户名" name="username" class="label_better" position="top" value=""
+           new-placeholder="用户名">
+</form>
+
+<script type="text/javascript" src="../../../thirdPlugins/jqueryCodeLearning/jquery-1.12.3.js"></script>
+<!--<script type="text/javascript" src="../demo/jquery.label_better.js"></script>-->
+<script type="text/javascript" src="label_better_by_myself.js"></script>
+<script type="text/javascript">
+
+
+    $(function () {
+
+        $(".label_better").label_better({
+            easing: "bounce",
+            offset: 10
+        });
+
+    })
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h4>自执行的匿名函数，形如(function(){//code})();</h4>
+<script type="text/javascript">
+
+    //    var a = (function (x, y) {
+    //        return x * y;
+    //    })(2, 3);
+    //    console.log(a);
+
+
+    //第一个括号是创建匿名函数，第二个函数是调用匿名函数，并传入参数。
+    //括号是表达式，是表达式就有返回值，所以可以在后面加一个括号让他们执行。
+
+    //    (function (x, y) {
+    //        return x * y;
+    //    })(2, 3)
+    console.log((function (x, y) {
+        return x * y;
+    })(2, 3));
+
+
+</script>
+</body>
+</html>

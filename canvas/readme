@@ -1,0 +1,3 @@
+参考网址：http://www.html5canvastutorials.com/tutorials/html5-canvas-shape-fill/
+
+ var lg = ctx.createLinearGradient.apply(ctx, gd);   不懂什么意思

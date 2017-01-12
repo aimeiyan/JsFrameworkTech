@@ -1,0 +1,13 @@
+1、filter 此属性ie不支持，chrome、opera、safar、firefox支持
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -ms-filter: blur(5px);
+    -o-filter: blur(5px);
+
+
+
+
+2、思考题，还未做
+show和reset的形状和动画
+做刮刮卡效果

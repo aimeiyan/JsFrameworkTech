@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+</head>
+<body>
+
+    <input type="file" id="file_input" /> 
+	<script>
+
+      document.getElementById('file_input').onchange = function () {
+          if (!window.FileReader) return alert('不支持 FileReader')
+          if (!this.files) return alert('不支持 files');
+          if (!this.files[0].type.match(/^image\//)) return alert('文件必须为图片');
+
+          var _reader = new FileReader();
+      
+              _reader.readAsDataURL(this.files[0]);
+              _reader.onload = function () {
+                  var oImg = new Image();
+                      oImg.src = this.result;
+                      console.log(this.result);
+                  document.body.appendChild(oImg);
+              };
+      };
+	    
+	</script>
+</body>
+</html>

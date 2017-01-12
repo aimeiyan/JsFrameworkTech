@@ -1,0 +1,14 @@
+1、2016-04-13 阅读阮一峰《React 入门实例教程》
+    http://www.ruanyifeng.com/blog/2015/03/react.html
+    react-demos-master 文件夹下的demo是该文章所讲事例。
+
+2、http://www.ruanyifeng.com/blog/2016/02/react-testing-tutorial.html 未读
+
+3、http://react-bootstrap.github.io/    用reactJs的语法引用bootstrap的样式
+
+
+
+六、参考资料
+   1、React中文文档  http://reactjs.cn/
+   2、React 入门实例教程    http://www.ruanyifeng.com/blog/2015/03/react.html
+   3、颠覆式前端UI开发框架：React   http://www.infoq.com/cn/articles/subversion-front-end-ui-development-framework-react

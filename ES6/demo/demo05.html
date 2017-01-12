@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript" src="../traceur/traceur.js"></script>
+<script type="text/javascript" src="../traceur/BrowserSystem.js"></script>
+<script type="text/javascript" src="../traceur/bootstrap.js"></script>
+<script type="module">
+
+    var tmp = 123;
+
+    if (true) {
+        tmp = 'abc'; // ReferenceError
+        let tmp;
+        console.log(tmp);
+    }
+
+    console.log(tmp);
+
+</script>
+</body>
+</html>

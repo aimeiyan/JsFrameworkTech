@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas" width="578" height="250"></canvas>
+<script type="text/javascript" src="../../jquery-1.11.3.min.js"></script>
+<script>
+    var canvas = document.getElementById('myCanvas');
+    var context = canvas.getContext('2d');
+    var x = canvas.width / 2;
+    var y = canvas.height / 2;
+    console.log("x =" + x, "y=" + y);
+    var radius = 75;
+    var startAngle = 0 * Math.PI;
+    //    var endAngle = 0;
+    //    var startAngle = 1.5 * Math.PI;
+    var endAngle = 0 * Math.PI;
+    var counterClockwise = false;
+
+    $(canvas).animate({endAngle: 2 * Math.PI}, {
+        duration: 5000,
+        step: function (now) {
+            console.log(now);
+            context.beginPath();
+            context.arc(x, y, radius, startAngle, now, counterClockwise);
+            context.lineWidth = 4;
+
+            context.fillStyle = '#8ED6FF';
+            context.fill();
+
+            var my_gradient = context.createLinearGradient(0, 0, 0, 170);
+            my_gradient.addColorStop(0, "#ffd131");
+            my_gradient.addColorStop(1, "#ff8d48");
+
+            context.strokeStyle = my_gradient;  //给绘制路径填充渐变色
+
+            //   context.strokeStyle = 'blue';  //给绘制路径填充单一颜色
+
+            context.stroke();
+        }
+    });
+
+</script>
+</body>
+</html>

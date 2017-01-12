@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>api-apply练习</title>
+</head>
+<body>
+<div>
+<p>对象的继承</p>
+	<p>Function.apply（当然使用Function.call也是可以的）</p>
+
+<p>apply方法能劫持另外一个对象的方法，继承另外一个对象的属性</p>
+
+<p>Function.apply(obj,args)方法能接收两个参数:</p>
+
+    <p>obj：这个对象将代替Function类里this对象</p>
+
+    <p>args：这个是数组，它将作为参数传给Function（args-->arguments）</p>
+</div>
+<script type="text/javascript">
+	function Person(name,age) {
+		// body...
+		this.name=name;
+		this.age=age;
+		this.sayhello=function(){
+			alert("hello");
+		}
+	}
+
+	function Print(){
+		this.funcName="Print";
+		this.show=function(){
+			var msg=[];
+			for(var key in this){
+				if(typeof(this[key])!="function"){
+					msg.push([key,":",this[key]].join(""))
+				}
+			}
+			alert(msg.join(" "));
+		}
+	}
+
+	function Student(name,age,grade,school){
+		Person.apply(this,arguments);
+			Print.apply(this,arguments);
+			this.grade=grade;
+			this.school=school;
+	}
+
+	var p1=new Person("jake",10);
+	p1.sayhello();
+	var s1=new Student("tom",13,6,"清华小学");
+s1.show();
+s1.sayhello();
+alert(s1.funcName);
+</script>
+</body>
+</html>

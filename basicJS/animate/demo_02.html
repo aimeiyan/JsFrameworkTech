@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #clickme {
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        #book {
+            width: 100px;
+            height: 123px;
+            position: relative;
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="demo-01">
+    <div id="clickme">
+        Click here
+    </div>
+    <img id="book" src="imgs/book.jpg" alt="book">
+</div>
+<script type="text/javascript" src="../../jquery-1.11.3.min.js"></script>
+<script>
+    $(function () {
+        $("#clickme").click(function () {
+            $(".demo-01 .demo-01-note").remove();
+            $("#book").animate({
+                left: "+=50",
+                height: ["toggle","swing"],
+                opacity: "toggle"
+            }, {
+                start: function (obj) {
+                    console.log(obj);
+                    console.log($(obj.elem).attr("id"));
+                    $(".demo-01 .data").remove();
+                },
+                duration: 2000,
+                specialEasing: {
+                    opacity: "linear"
+                },
+                step: function (now, fx) {
+                    var data = fx.elem.id + " " + fx.prop + ": " + now;
+                    $(".demo-01").append("<div class='data'>" + data + "</div>");
+                }
+            })
+        })
+    })
+</script>
+</body>
+</html>

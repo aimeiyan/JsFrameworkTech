@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>慕课网－canvas玩转红包照片</title>
+    <link rel="stylesheet" href="blur.css"/>
+    <meta name="viewport"
+          content=" height = device-height,
+    width = device-width,
+    initial-scale = 1.0,
+    minimum-scale = 1.0,
+    maximum-scale = 1.0,
+    user-scalable = no"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #blur-div {
+            /*width: 671px;*/
+            /*height: 359px;*/
+            position: relative;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        #blur-image {
+            /*width: 671px;*/
+            /*height: 359px;*/
+            display: block;
+            margin: 0 auto;
+
+        / / filter 此属性ie不支持，chrome、opera、safar、firefox支持 filter : blur(5 px);
+            filter: blur(15px);
+            -webkit-filter: blur(15px);
+            -moz-filter: blur(15px);
+            -ms-filter: blur(15px);
+            -o-filter: blur(15px);
+
+            position: absolute;
+            left: 0;
+            right: 0;
+            z-index: 0;
+        }
+
+        #canvas {
+            display: block;
+            /*margin: 0 auto;*/
+            position: absolute;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            /*background-color: red;*/
+        }
+
+        .button {
+            display: block;
+            position: absolute;
+            z-index: 200;
+
+            width: 100px;
+            height: 30px;
+
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 5px;
+        }
+
+        #reset-buttion {
+            left: 50px;
+            bottom: 20px;
+            background-color: red;
+        }
+
+        #show-buttion {
+            right: 50px;
+            bottom: 20px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+<div id="blur-div">
+    <img src="pic2.jpg" alt="" id="blur-image"/>
+    <canvas id="canvas"></canvas>
+    <a href="javascript:reset();" class="button" id="reset-buttion">Reset</a>
+    <a href="javascript:show();" class="button" id="show-buttion">Show</a>
+</div>
+<script src="jquery-2.1.3.min.js"></script>
+<script src="blur.js"></script>
+<script>
+    //    $(function () {
+    var canvasWidth = window.innerWidth;
+    var canvasHeight = window.innerHeight;
+
+    var canvas = document.getElementById("canvas");
+    var context = canvas.getContext("2d");
+
+    canvas.width = canvasWidth;
+    canvas.height = canvasHeight;
+
+    var image = new Image();
+    var radius = 50;
+    var clippingRegion = {x: 335, y: 200, r: radius};
+    var leftMargin = 0, topMargin = 0;
+    image.src = "pic2.jpg";
+
+    image.onload = function (e) {
+        $("#blur-div").css({
+            "width": canvas.width,
+            "height": canvas.height
+        });
+
+        leftMargin = (image.width - canvas.width) / 2;    //图片的宽高都大于canvas
+        topMargin = (image.height - canvas.height) / 2;   //图片的宽高都大于canvas
+
+        $("#blur-image").css({
+            "width": image.width,
+            "height": image.height,
+            "top": -topMargin,
+            "left": -leftMargin
+        });
+
+        initCanvas();
+    };
+
+    function initCanvas() {
+        clippingRegion = {
+            x: Math.random() * (canvas.width - 2 * radius) + radius,
+            y: Math.random() * (canvas.height - 2 * radius) + radius, r: radius
+        };
+
+        draw(image, clippingRegion);
+    }
+
+    function setClippingRegion(clippingRegion) {
+        context.beginPath();
+        context.arc(clippingRegion.x, clippingRegion.y, clippingRegion.r, 0, Math.PI * 2, false);
+        context.clip();
+    }
+
+    function draw(image, clippingRegion) {
+
+        context.clearRect(0, 0, canvas.width, canvas.height);   //清除canvas
+        context.save();   //状态存储
+        setClippingRegion(clippingRegion);
+        context.drawImage(image, leftMargin, topMargin, canvasWidth, canvasHeight, 0, 0, canvasWidth, canvasHeight);
+        context.restore();   //状态恢复
+
+    }
+
+
+    //    })
+
+    function reset() {
+        initCanvas();
+    }
+    function show() {
+//        clippingRegion.r = 1000;
+//        draw(image, clippingRegion);
+
+        var theAnimation = setInterval(function () {
+            console.log("setInterval");
+            clippingRegion.r += 30;
+//            if(clippingRegion.r>1000){
+            if (clippingRegion.r > 2 * Math.max(canvas.width, canvas.height)) {
+                clearInterval(theAnimation);
+            }
+            draw(image, clippingRegion);
+        }, 30)
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript" src="../traceur/traceur.js"></script>
+<script type="text/javascript" src="../traceur/BrowserSystem.js"></script>
+<script type="text/javascript" src="../traceur/bootstrap.js"></script>
+<script type="module">
+
+    for (let i = 0; i < 10; i++) {
+    }
+    console.log(i);
+
+
+// 代码中，变量i是var声明的，在全局范围内都有效。所以每一次循环，新的i值都会覆盖旧值，导致最后输出的是最后一轮的i的值。
+    var a = [];
+    for (var i = 0; i < 10; i++) {
+        a[i] = function () {
+            console.log(i);
+        };
+    }
+    a[6](); // 10
+
+
+// 变量i是let声明的，当前的i只在本轮循环有效，所以每一次循环的i其实都是一个新的变量，所以最后输出的是6。
+    var b = [];
+    for (let i = 0; i < 10; i++) {
+        b[i] = function () {
+            console.log(i);
+        };
+    }
+    b[6](); // 10
+
+</script>
+</body>
+</html>

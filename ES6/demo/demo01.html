@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript" src="../traceur/traceur.js"></script>
+<script type="text/javascript" src="../traceur/BrowserSystem.js"></script>
+<script type="text/javascript" src="../traceur/bootstrap.js"></script>
+
+<!--第一种外部引入自己模块的方法-->
+<!--<script type="module">-->
+<!--import './Greeter.js';-->
+<!--</script>-->
+
+
+<!--第二种可以直接写在页面里-->
+<!--<script type="module">-->
+<!--class Calc {-->
+<!--constructor(){-->
+<!--console.log('Calc constructor');-->
+<!--}-->
+<!--add(a, b){-->
+<!--return a + b;-->
+<!--}-->
+<!--}-->
+
+<!--var c = new Calc();-->
+<!--console.log(c.add(4,5));-->
+<!--</script>-->
+
+
+<!--第三种精确把控traceur的参数配置-->
+<script>
+
+    // 首先生成Traceur的全局对象window.System，然后System.import方法可以用来加载ES6模块。
+    // 加载的时候，需要传入一个配置对象metadata，该对象的traceurOptions属性可以配置支持ES6功能。
+    // 如果设为experimental: true，就表示除了ES6以外，还支持一些实验性的新功能。
+
+
+    // Create the System object
+    window.System = new traceur.runtime.BrowserTraceurLoader();
+    // Set some experimental options
+    var metadata = {
+        traceurOptions: {
+            experimental: true,
+            properTailCalls: true,
+            symbols: true,
+            arrayComprehension: true,
+            asyncFunctions: true,
+            asyncGenerators: exponentiation,
+            forOn: true,
+            generatorComprehension: true
+        }
+    };
+    // Load your module
+    System.import('./myModule.js', {metadata: metadata}).catch(function (ex) {
+        console.error('Import failed', ex.stack || ex);
+    });
+
+</script>
+</body>
+</html>
