@@ -1,3 +1,5 @@
 .idea
 .DS_Store
 nodeJS/imooc/exercise/http/node_modules
+
+nodeJS/websocket/node_modules/
