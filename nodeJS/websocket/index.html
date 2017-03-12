@@ -1,39 +1,39 @@
 <!DOCTYPE html>
-    <head>
-        <title>WebSocket</title>
-    </head>
-    <body>
-        <script>
-            var onOpen = function(event){
-                console.log('Socket opened. readyState:'+socket.readyState);
-                var msg = {
-                    type: "message",
-                    text: "something",
-                    id: "number",
-                    time: Date.now()
-                };
-                //send可以向后台发送字符串、Blob或ArrayBuffer，固传入对象时，利用JSON对其序列化
-                socket.send(JSON.stringify(msg));
-            };
-            var onClose = function(event){
-                console.log('Socket closed.readyState:'+socket.readyState);
-                console.log('Connected to: ' + event.currentTarget.url);
-            };
-            var onMessage = function(data){
-                console.log("We get signal:");
-                console.log(data);
-				console.log(data.data);              	
-                console.log('onMessageready: ' + socket.readyState);
-            };
-            var onError = function(event){
-                console.log("We got an error.: " + event.data);
-            };
-            var socket = new WebSocket('ws://127.0.0.1:9875/');
-            socket.onopen = onOpen;
-            socket.onclose = onClose;
-            socket.onerror = onError;
-            socket.onmessage = onMessage;
-        </script>    
-    </body>
+<head>
+    <title>WebSocket</title>
+</head>
+<body>
+<script>
+    var onOpen = function (event) {
+        console.log('Socket opened. readyState:' + socket.readyState);
+        var msg = {
+            type: "message",
+            text: "something",
+            id: "number",
+            time: Date.now()
+        };
+        //send可以向后台发送字符串、Blob或ArrayBuffer，固传入对象时，利用JSON对其序列化
+        socket.send(JSON.stringify(msg));
+    };
+    var onClose = function (event) {
+        console.log('Socket closed.readyState:' + socket.readyState);
+        console.log('Connected to: ' + event.currentTarget.url);
+    };
+    var onMessage = function (data) {
+        console.log("We get signal:");
+        console.log(data);
+        console.log(data.data);
+        console.log('onMessageready: ' + socket.readyState);
+    };
+    var onError = function (event) {
+        console.log("We got an error.: " + event.data);
+    };
+    var socket = new WebSocket('ws://127.0.0.1:9875/');
+    socket.onopen = onOpen;
+    socket.onclose = onClose;
+    socket.onerror = onError;
+    socket.onmessage = onMessage;
+</script>
+</body>
 </html>
 
