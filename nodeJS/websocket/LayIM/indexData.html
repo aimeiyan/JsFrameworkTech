@@ -31,12 +31,12 @@
     <script src="layui.js"></script>
     <script src="jquery-1.9.1.js"></script>
     <script>
-    var mine={
-                    "username": "白杰",
-                    "id": "00000",
-                    "status": "online",
-                    "avatar": "images/header/baijie.png"
-                };
+    var mine = {
+        "username": "白杰",
+        "id": "00000",
+        "status": "online",
+        "avatar": "images/header/baijie.png"
+    };
     layui.use('layim', function() {
         var layim = layui.layim;
 
@@ -125,9 +125,15 @@
             socket.close();
         }
 
-        layim.on('sendMessage', function(data) {
+        layim.on('sendMessage', function(res) {
 
-            var To = data.to;
+            var mine = res.mine; //包含我发送的消息及我的信息
+            var to = res.to; //对方的信息
+            socket.send({
+                type: 'chatMessage', //随便定义，用于在服务端区分消息类型
+                data: res
+            });
+            // var To = data.to;
 
             // if (To.type === 'friend') {
             //     layim.setChatStatus('<span style="color:#FF5722;">对方正在输入。。。</span>');
@@ -136,20 +142,20 @@
             // var socket = new WebSocket('ws://localhost:9082');
 
             // socket.send(JSON.stringify(data));   //发送消息倒Socket服务
-            socket.send({
-                type: 'chatMessage', //随便定义，用于在服务端区分消息类型
-                data: data
-            });
+            // socket.send({
+            //     type: 'chatMessage', //随便定义，用于在服务端区分消息类型
+            //     data: data
+            // });
 
-                    // //监听收到的聊天消息，假设你服务端emit的事件名为：chatMessage
-                    socket.emit('chatMessage');
-socket.onmessage = function(res){
-    console.log("====");
-  res = JSON.parse(res);
-  if(res.emit === 'chatMessage'){
-    layim.getMessage(res.data); //res.data即你发送消息传递的数据（阅读：监听发送的消息）
-  }
-};
+            // //监听收到的聊天消息，假设你服务端emit的事件名为：chatMessage
+            //                     socket.emit('chatMessage');
+            // socket.onmessage = function(res){
+            //     console.log("====");
+            //   res = JSON.parse(res);
+            //   if(res.emit === 'chatMessage'){
+            //     layim.getMessage(res.data); //res.data即你发送消息传递的数据（阅读：监听发送的消息）
+            //   }
+            // };
         });
 
 
