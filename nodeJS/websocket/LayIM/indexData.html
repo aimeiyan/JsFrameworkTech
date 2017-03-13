@@ -24,7 +24,7 @@
 
 <body>
     <ul class="user-list">
-        <li data-id="00000"><img src="images/header/baijie.png" alt="">白杰</li>
+        <!-- <li data-id="00000"><img src="images/header/baijie.png" alt="">白杰</li> -->
         <li data-id="11111"><img src="images/header/songzhicheng.png" alt="">宋智成</li>
     </ul>
     <script src="/socket.io/socket.io.js"></script>
@@ -114,14 +114,7 @@
         //     var obj = eval("(" + event.data + ")");
         //     layim.getMessage(obj);
         // }
-        // //监听收到的聊天消息，假设你服务端emit的事件名为：chatMessage
-socket.onmessage = function(res){
-    console.log("====");
-  res = JSON.parse(res);
-  if(res.emit === 'chatMessage'){
-    layim.getMessage(res.data); //res.data即你发送消息传递的数据（阅读：监听发送的消息）
-  }
-};
+
 
         // 连接关闭的回调方法
         socket.onclose = function() {
@@ -147,6 +140,16 @@ socket.onmessage = function(res){
                 type: 'chatMessage', //随便定义，用于在服务端区分消息类型
                 data: data
             });
+
+                    // //监听收到的聊天消息，假设你服务端emit的事件名为：chatMessage
+                    socket.emit('chatMessage');
+socket.onmessage = function(res){
+    console.log("====");
+  res = JSON.parse(res);
+  if(res.emit === 'chatMessage'){
+    layim.getMessage(res.data); //res.data即你发送消息传递的数据（阅读：监听发送的消息）
+  }
+};
         });
 
 
