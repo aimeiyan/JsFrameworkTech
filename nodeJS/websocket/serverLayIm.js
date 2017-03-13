@@ -37,7 +37,7 @@ io.sockets.on('connection', function(socket) {
                 if (d.data.to.type == 'friend') {
                     console.log("huahua");
                       // io.sockets.emit('chatMessage', mydata);
-                    io.sockets.emit('chatMessage', mydata);
+                    //io.sockets.emit('chatMessage', mydata);
                     socket.broadcast.emit('chatMessage', mydata);
                     // console.log('【' + d.data.mine.username + '】对【' + d.data.to.name + '】说:' + d.data.mine.content)
                     // if (user[mydata.toid]) {

@@ -24,7 +24,7 @@
 
 <body>
     <ul class="user-list">
-        <li data-id="00000"><img src="images/header/baijie.png" alt="">白杰</li>
+        <li data-id="10000"><img src="images/header/baijie.png" alt="">白杰</li>
         <!-- <li data-id="11111"><img src="images/header/songzhicheng.png" alt="">宋智成</li> -->
     </ul>
     <script src="/socket.io/socket.io.js"></script>
@@ -106,7 +106,14 @@
         // 连接成功建立的回调方法
         socket.onopen = function(event) {
             console.log("链接成功!");
-        }
+        };
+
+        socket.on('chatMessage', function(res) {
+//            layim.getMessage(res.data);
+            layim.getMessage(res);
+
+            console.log('www-------------', res)
+        });
 
         // 接收到消息的回调方法
         // socket.onmessage = function(event) {
