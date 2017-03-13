@@ -116,7 +116,7 @@
         // }
         // //监听收到的聊天消息，假设你服务端emit的事件名为：chatMessage
 socket.onmessage = function(res){
-    console.log("====");
+    console.log(res,"====");
   res = JSON.parse(res);
   if(res.emit === 'chatMessage'){
     layim.getMessage(res.data); //res.data即你发送消息传递的数据（阅读：监听发送的消息）
