@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+
+    // 题目：一个函数，每次调用输出值自增1，2，3
+
+
+    var autoIncrement = function () {
+        var a = 0;
+        var b = 0;
+
+        return function () {
+            b = b + 1;
+            a = a + b;
+            return a
+        }
+    }()
+
+    for (var i = 0; i < 3; i++) {
+        console.log(autoIncrement());
+    }
+
+
+    //    判断字符串是不是数字型字符串
+
+    var c = "123abc";
+    var d = "123";
+
+    function numberString(a) {
+        a = Number(a);
+        if (!isNaN(a)) {
+            return "" + a + " 是数字型字符串";
+        }
+    }
+
+    numberString(c);
+    numberString(d);
+
+
+</script>
+</body>
+</html>

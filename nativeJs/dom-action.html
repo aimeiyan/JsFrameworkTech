@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>原生的Dom操作</title>
+</head>
+<body>
+<div id="div1">
+    <p id="p1">这是第一个段落。</p>
+
+    <p id="p2">这是第二个段落。</p>
+
+    <p id="p3">这是另一个段落。</p>
+
+</div>
+<dvi id="div2">
+    <p class="my-class" data-id="01" data-action="action" id="myClass">my class 01<span>&nbsp;&nbsp;第一个</span></p>
+
+    <p class="my-class">my class 02</p>
+
+    <p class="my-class">my class 03</p>
+
+    <p class="my-class">my class 04</p>
+</dvi>
+
+<div class="table">
+    <table>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+
+    //    id=div1中实现dom的创建、删除、添加、插入节点、替换
+    var para = document.createElement("p");
+    var node = document.createTextNode("这是新段落");
+
+    para.appendChild(node);
+
+    var parent = document.getElementById("div1");
+    parent.appendChild(para);
+
+
+    var children = document.getElementById("p1");
+    parent.removeChild(children);
+
+    var para_p2 = document.getElementById("p2");
+    para_p2.parentNode.removeChild(para_p2);
+
+
+    //id =div2中实现dom的查询
+    var parent_div2 = document.getElementById("div2");
+    var el = document.querySelector(".my-class"); //返回当前文档中第一个类名是my-class的元素
+    var el_2 = parent_div2.childNodes[1];
+
+    console.log(parent_div2.childNodes, "childnodes---");
+    console.log(el_2, "childnodes--el_2-");
+
+    //    parent_div2.replaceChild(el_3, el_4);
+
+
+    console.log(el.attributes, "获取元素属性数组");
+    console.log(el.getAttribute('id'), "获取元素属性id");
+    console.log(el.setAttribute('data-action', 'highlight'), "设置元素属性data-action");
+    console.log(el.hasAttribute('data-action'), "判断元素是否有属性data-action");
+    //    console.log(el.removeAttribute('data-action'), "删除元素是否有属性data-action");
+    console.log(el.nextElementSibling, "下一个兄弟元素");
+    console.log(el.previousElementSibling, "上一个兄弟元素");
+
+
+    var new_el = el.cloneNode(true);
+    var els = document.querySelectorAll(".my-class"); //返回当前文档中所有类名是my-class的元素
+
+    var newMyClass = document.createElement("p");
+    var textNode = document.createTextNode("my class 00");
+    newMyClass.appendChild(textNode);
+
+    parent_div2.insertBefore(newMyClass, el);
+    parent_div2.insertBefore(new_el, el);
+
+
+    var myClass = document.getElementsByClassName("my-class");
+    var tds = document.getElementsByTagName("td");
+
+    var tdTextNode = document.createTextNode("2");
+
+    tds[0].replaceChild(tdTextNode, tds[0].childNodes[0]);
+
+    console.log(el, "dom查询");
+    console.log(els, "dom查询");
+    console.log(myClass, "dom获取");
+    console.log(tds, "td元素");
+
+
+</script>
+</body>
+</html>
