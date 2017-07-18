@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>数组对象</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 数组的定义方式
+
+    var names = new Array("张三", "李四", "王五");
+    //    或者
+    var cars = ["Ford", "BMW", "Audi"];
+
+    console.log(names, "定义数组names", cars, "定义数组cars");
+
+
+    //实例方法，常用方法:unshift(),shift(),push(),pop();
+
+    //unshift() 在数组的头部插入元素，返回值是数组长度，原数组改变
+    console.log(names.unshift("赵六"), names, "在数组头部插入元素'赵六'");
+
+    //shift() 从数组的头部移除并返回数组的第一个元素
+    console.log(cars.shift(), cars, "在数组头部移除第一个元素");
+
+    //push() 在数组尾部插入元素，返回值是数组长度，原数组改变
+    console.log(cars.push("Cayenne"), cars, "在数组尾部插入元素");
+
+    //pop()  从数组的尾部移除并返回数组的最后一个元素
+    console.log(cars.pop(), cars, "pop()从数组的尾部移除并返回数组的最后一个元素");
+
+
+    //concat():把元素连接到数组中，不会修改原先的array，返回新的数组
+    var demoArray = ['a', 'b', 'c'];
+    var demoArray2 = demoArray.concat("e");
+
+    console.log(demoArray, demoArray2);
+
+    var demoArray3 = [1, 2, 3];
+
+    //every():依次遍历元素，判断每个元素是否都为true,返回值是{boolean}:只有每个元素都返回true才返回true，只要一个返回false，就返回false。
+    //“self”指的是数组本身
+    var res = demoArray3.every(function (value, index, self) {
+        return value > 1
+    });
+
+    console.log(res);
+
+
+    //filter():依次遍历数组元素，返回包含符合条件的元素的新数组
+    var new_demoArray3 = demoArray3.filter(function (value, index, self) {
+        return value > 1
+    });
+
+    console.log(new_demoArray3, "new demo array--");
+
+
+    //forEach():依次遍历元素，执行指定的函数，无返回值
+    demoArray3.forEach(function (value, index, self) {
+        console.log(value, "数组中的元素");
+    });
+
+
+    //indexOf():在数组中查找匹配的元素，返回数组中第一个匹配的元素的下标，如果没有则返回-1。
+    console.log(demoArray3.indexOf(2));
+    console.log(demoArray3.indexOf("1"));
+
+
+    //join():将数组中所有元素通过一个分隔符拼接成一个字符串
+    console.log(demoArray3.join("-"));
+
+
+    //map():依次遍历并计算每个元素，返回计算好的元素的数组
+    var demoArray4 = demoArray3.map(function (value, index, self) {
+        return value * 2;
+    });
+
+    console.log(demoArray4, "demoArray4----");
+
+
+    //reverse():反转数组元素的顺序
+    var demoArray5 = demoArray4.reverse();
+    console.log(demoArray5);
+
+
+    //slice(startIndex,endIndex):返回数组的一部分。
+    // startIndex 可以是负值，“-1”代表最后一个元素，“-2”代表倒数第二个元素。
+    // endIndex 截取的元素不包含此处序号的元素，结尾为此处序号的前一个元素。
+    var demoArray6 = ["a", "b", "c", "d", "e", "f"];
+    console.log(demoArray6.slice());
+    console.log(demoArray6.slice(1));
+    console.log(demoArray6.slice(2, 6));
+    console.log(demoArray6.slice(-3));
+
+
+    //splice(start,deleteCount,value1,value2,value3,...,valueN):插入、删除数组元素，返回值是包含删除的元素的新数组
+    //start:开始插入、删除的起始下标
+    //deleteCount:要删除元素的个数，从start处开始计算
+    //value1,value2,value3,...,valueN:可选参数，表示要插入的元素，从start处开始插入。若deleteCount不为0，则先执行删除操作，在执行插入操作。
+
+    var a_array = ["a", "b", "c", "d", "e", "f", "g"];
+    console.log(a_array, "splice操作原数组");
+    console.log(a_array.splice(0, 2), "splice删除");
+    console.log(a_array.splice(0, 0, "1", "2", "3"), "splice deleteCout 为0 返回空数组");
+    console.log(a_array, "splice插入之后的数组");
+
+    console.log(a_array.splice(0, 3, "aa", "bb", "cc"), "splice删除再插入的返回值");
+    console.log(a_array, "splice删除再插入之后的数组");
+
+
+    //toString():数组中所有元素通过“,”拼接成一个字符串
+    console.log(demoArray6.toString());
+
+
+    //sort(opt_orderFunc):
+    var demoArray7 = [1, 3, 5, 2, 4, 11, 22];
+    console.log(demoArray7);
+
+    var demoArray7_sort = demoArray7.sort(function (v1, v2) {
+        return v1 - v2;
+    });
+    console.log(demoArray7_sort);
+
+    var demoArray7_sort2 = demoArray7.sort(function (v1, v2) {
+        return -(v1 - v2);
+    });
+    console.log(demoArray7_sort2);
+
+    var arr = [
+        {
+            "a": "1",
+            "b": "3"
+        },
+        {
+
+            "a": "12",
+            "b": "3"
+        },
+        {
+
+            "a": "35",
+            "b": "30"
+        },
+        {
+
+            "a": "8",
+            "b": "30"
+        },
+        {
+
+            "a": "10",
+            "b": "8"
+        },
+        {
+
+            "a": "56",
+            "b": "7"
+        }
+    ];
+
+    //按照a属性的值，从小到大排序
+    var new_arr = arr.sort(function (v1, v2) {
+        return v1.a - v2.a;
+    });
+
+    //按照a、b属性的值的距离的值，从小到大排序
+    var new_arr2 = arr.sort(function (v1, v2) {
+        return Math.abs(v1.a - v1.b) - Math.abs(v2.a - v2.b)
+    });
+
+    console.log(new_arr);
+    console.log(new_arr2);
+
+
+
+    //Array.isArray(obj) 判断对象是否为数组，返回值为Boolean
+    console.log(Array.isArray(new_arr2));
+
+    
+</script>
+</body>
+</html>
