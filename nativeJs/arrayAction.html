@@ -34,6 +34,13 @@
     var demoArray = ['a', 'b', 'c'];
     var demoArray2 = demoArray.concat("e");
 
+    //深度复制数组，改变deepCopyArray数组，demoArray2不会跟随改变，叫做深度复制
+    var deepCopyArray = demoArray2.concat();
+
+    //浅复制数组:对shallowArray中的元素进行修改时，deepCopyArray也会改变
+    var shallowArray = deepCopyArray;
+
+
     console.log(demoArray, demoArray2);
 
     var demoArray3 = [1, 2, 3];
@@ -172,11 +179,10 @@
     console.log(new_arr2);
 
 
-
     //Array.isArray(obj) 判断对象是否为数组，返回值为Boolean
     console.log(Array.isArray(new_arr2));
 
-    
+
 </script>
 </body>
 </html>

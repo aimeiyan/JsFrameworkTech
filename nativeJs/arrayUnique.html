@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>数组去重</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    //数组去重方法一
+    Array.prototype.unique = function () {
+        var res = [];
+        var json = [];
+
+        for (var i = 0; i < this.length; i++) {
+            if (!json[this[i]]) {
+                res.push(this[i]);
+                json[this[i]] = 1;
+            }
+        }
+
+        return res;
+
+    };
+
+    // 这种方法"1"也去掉了，第二种方法不会出现这种问题
+    console.log([1, 2, 3, "1", 1, "a", "a", "h"]);
+    console.log([1, 2, 3, "1", 1, "a", "a", "h"].unique());
+
+    // 数组去重方法二
+    var arrUnique = (function () {
+        var newArr = [];
+        return function (arr) {
+            for (var i = 0; i < arr.length; i++) {
+                if (newArr.indexOf(arr[i]) == -1) {
+                    newArr.push(arr[i]);
+                }
+            }
+
+            return newArr;
+        }
+
+    })();
+
+    //    console.log(arrUnique());
+    console.log(arrUnique([1, 2, 3, "1", 1, "a", "a", "h"]));
+    console.log(arrUnique(["a", "p", "g", "e", "l", "w", "g"]));
+
+</script>
+</body>
+</html>
