@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>浅拷贝和深度拷贝</title>
+</head>
+<body>
+
+<script type="text/javascript" src="../jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+    // 基本数据类型：string、number、boolean、null、undefined，传值方式是按值传递
+    // 对象是按引用传值
+
+    // 浅拷贝只复制指向某个对象的指针，而不复制对象本身，新旧对象还是共享同一块内存。
+    // 但深拷贝会另外创造一个一模一样的对象，新对象跟原对象不共享内存，修改新对象不会改到原对象。
+
+
+    //深度拷贝
+    var defaultOption = {validate: false, limit: 5, name: "foo"};
+    var options = {validate: true, limit: 9, name: "bar"};
+
+    var result = $.extend({}, defaultOption, options);
+    var result1 = $.extend(true, {}, defaultOption);
+
+    //    console.log(result, "result---+++");
+
+    result1.limit = 120;
+
+    console.log(result1, "result---+++");
+    console.log(defaultOption, "result---+++");
+
+
+</script>
+</body>
+</html>
