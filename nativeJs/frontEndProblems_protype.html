@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+//    9、请写出下面 JS 程序中几个 document.write 的结果：
+
+    function Parent() {
+        this.a = 1;
+        this.b = [1, 2, this.a];
+        this.c = {demo: 5};
+        this.show = function() {
+            document.write(this.a + ' ' + this.c.demo + ':' + this.b + '<br/>')
+        }
+    }
+    function Child() {
+        this.a = 2;
+        this.change = function() {
+            this.b.push(this.a);
+            this.a = this.b.length;
+            this.c.demo = this.a++;
+        }
+    }
+    Child.prototype = new Parent();
+    var parent = new Parent();
+    var child1 = new Child();
+    var child2 = new Child();
+    child1.a = 11;
+    child2.a = 12;
+    parent.show();
+    child1.show();
+    child2.show();
+    child1.change();
+    child2.change();
+    parent.show();
+    child1.show();
+    child2.show();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+  var re = /\d/;
+
+    // \d = [0-9]
+    // [abc]
+    // [a-c]
+    // \\d
+    // \w - [a-zA-z0-9_]
+    // \W - [^]
+    // \s -> space [ \t\n]
+    // \S -> ^space
+
+    // +*?
+    // a{3,5}
+    // ^$
+
+
+  // \d{3,4}-\d{7,8}
+
+
+  /\d{3,4}-\d{7,8}/.exec('010-88765432');
+
+  '010-88765432'.replace(/(\d{3,4})-(\d{7,8})/, "$2-$1")
+
+
+    "abc".replace(/a/, 'b');
+
+    /\d/.test('123');
+    /\\d/.test('123');
+    /\\d/.test('123\\d');
+  /\w/.test('-');
+  /\w/.test('_');
+  /\w/.test('?');
+  /\W/.test('?');
+  /[a-zA-z0-9_]/.test('?');
+  /[^a-zA-z0-9_]/.test('?');
+  /^a/.test('a');
+  /^a/.test('b');
+  /a{3,5}/.test('a');
+  /a{3,5}/.test('aa');
+  /a{3,5}/.test('aaa');
+  /a{3,5}/.test('aaaa');
+  /a{3,5}/.test('aaaaa');
+  /a{3,5}/.test('aaaaaa');
+  /a{3,5}/.test('aaaaaaaaa');
+  /a{3,5}/.exec('aaaaaaaaa');
+  /a{3,5}/.exec('abc');
+  /a{3,5}/.exec('baaaaa');
+  /a{3,5}/.test('baaaaa');
+  /^a{3,5}/.test('baaaaa');
+  /a{3,5}$/.test('baaaaa');
+  /a{3,5}$/.test('baaaaac');
+  /^a{3,5}$/.test('baaaaac');
+  /\d{3,4}-\d{7,8}/.exec('010-88765432');
+  /(\d{3,4})-(\d{7,8})/.exec('010-88765432');
+  '010-88765432'.replace(/(\d{3,4})-(\d{7,8})/, "$2-$1");
+  /(aa|bb)/.test("aabb");
+  /(aa|bb)/.test("aa");
+  /(aa|bb)/.test("ab");
+
+  /([a-zA-Z0-9]+)@([a-zA-Z0-9]+).([a-zA-Z0-9]+)/.test("6758@qq.com");
+  /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/.test("35t34@me\.com.cn");
+
+
+
+//  4、有字符串 var = 'abc345efgabcab'，请写出 3 条 JS 语句分别实现如下 3 个功能：
+//  1）去掉字符串中的a、b、c 字符，形成结果：'345efg'
+//  2）将字符串中的数字用中括号括起来，形成结果：'abc3[5]efgabcab'
+//  3）将字符串中的每个数字的值分别乘以 2，形成结果：'abc6810efgabcab'
+
+  var a= 'abc345efgabcab';
+  a.replace(/(\d)/g, '[$1]');
+  a.replace(/([a-c])/g,"");
+  a.replace(/[a-c]/g,"");
+  a.replace(/(\d)/g,function(num){
+      return num*2;
+  });
+
+
+//  7、请写出一下正则表达式：
+//  1）匹配一个全部是数字的字符串
+//  2）提取一个 url 所使用的协议类型如 http、ftp 和 host 名称
+
+    /(^\d+$)/.test("1234");
+    /[a-zA-Z0-9]{3,5}:\/\//.test("http://www.baidu.com");
+
+
+  var str = 'http://yangbai.me';
+  str.match(/(([a-zA-Z]{3,5})\:\/\/)?(www\.)?([a-zA-Z\_\-]+)\.([a-zA-Z]+)$/);
+
+
+</script>
+</body>
+</html>

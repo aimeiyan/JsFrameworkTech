@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+//    8、请使用闭包的方式，写一段 JS 程序实现如下功能：函数每调用一次则该函数的返回值加 1。
+
+    function A(){
+        var count=0;
+        function B(){
+            count++;
+            return count;
+        }
+        return B;
+    }
+
+    var plus=A();
+
+    //A中的count会一直停留在内存中
+    plus(); // 1
+    plus(); // 2
+
+
+</script>
+</body>
+</html>

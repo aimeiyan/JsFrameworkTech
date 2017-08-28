@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    //    一个数组 par 中存放有多个人员的信息，每个人员的信息由年龄 age 和姓名 name 组成，
+    //    如{age: 2, name: 'xx'}。请写一段 JS 程序，对这个数组按年龄从小到大进行排序。
+
+    var par = [
+        {
+            name: "张三",
+            age: 11
+        },
+        {
+            name: "李四",
+            age: 5
+        },
+        {
+            name: "王五",
+            age: 8
+        },
+        {
+            name: "赵六",
+            age: 13
+        }
+    ];
+
+    function parSort(par) {
+        return par.sort(function (arr1, arr2) {
+//            return arr1.age - arr2.age;   //升序
+//            return arr2.age - arr1.age;    //降序
+            return arr1.age < arr2.age ? -1 : 1;  //升序
+//            return arr1.age > arr2.age ? -1 : 1;  //降序
+        })
+    }
+
+    parSort(par);
+    console.log(parSort(par));
+
+
+    //sort()函数用于将当前数组对象的元素按指定顺序进行排序，并返回排序后的数组，并不会创建新的数组对象，返回的数组
+    //就是经过排序后的当前数组本身
+    //定义一个数组对象
+    var array = ["Code", true, "Player", -5.21, false, 12, 0];
+    var sortedArray=array.sort();
+    console.log(array,"array---");
+    console.log(sortedArray,"sortedArray");
+    //返回的数组对象sortArray就是经过排序后的数组本身
+    console.log(array===sortedArray);
+
+    //根据元素转换为字符串后的字符长度升序进行排序
+    function arraySortByLength(a,b){
+        var aStr= a.toString(),bStr= b.toString();
+        return aStr.length-bStr.length;  //升序
+//        return bStr.length-aStr.length;  //降序
+    }
+
+    var array2 = ["Code", true, "Player", -5.21, false, 12, 0];
+    array2.sort(arraySortByLength);
+    console.log(array2,"array2按照升序排列");
+
+</script>
+</body>
+</html>
